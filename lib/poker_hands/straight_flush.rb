@@ -1,0 +1,2 @@
+class StraightFlush < PokerHand
+end

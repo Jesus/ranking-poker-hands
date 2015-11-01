@@ -1,0 +1,2 @@
+class HighCard < PokerHand
+end

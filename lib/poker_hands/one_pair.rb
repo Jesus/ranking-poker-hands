@@ -1,0 +1,2 @@
+class OnePair < PokerHand
+end

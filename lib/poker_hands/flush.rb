@@ -1,0 +1,2 @@
+class Flush < PokerHand
+end
