@@ -3,16 +3,26 @@ require "card"
 
 describe Card do
   describe "#initialize" do
+    let(:valid_cards) {%w(2S 2D AH 3S 5S 2H 2C KH 5H 9C)}
+
     it "builds a card from a string" do
-      valid_cards = %w(2S 2D AH 3S 5S 2H 2C KH 5H 9C)
       valid_cards.each do |card|
         expect(described_class.new(card)).to be_a(described_class)
       end
     end
 
+    it "builds a card from a pair of rank and suit" do
+      valid_cards.map(&:chars).each do |rank, suit|
+        rank = CardRank.new(rank)
+        suit = CardSuit.new(suit)
+
+        expect(described_class.new(rank, suit)).to be_a(described_class)
+      end
+    end
+
     context "with wrong card identifying string" do
       it "will fail with an invalid rank (number or face)" do
-        cards_with_invalid_rank = %w(HH ID PH PC RD DD)
+        cards_with_invalid_rank = %w(Sk HH ID PH PC RD DD IDK 9c 99 99)
         cards_with_invalid_rank.each do |card|
           expect {
             described_class.new(card)
@@ -23,6 +33,15 @@ describe Card do
       it "will fail with an invalid suit" do
         cards_with_invalid_suit = %w(HF IV PA PF RL DY)
         cards_with_invalid_suit.each do |card|
+          expect {
+            described_class.new(card)
+          }.to raise_error(ArgumentError)
+        end
+      end
+
+      it "will fail with an invalid string" do
+        invalid_cards = %w(2Sk 123 SDK ! omg)
+        invalid_cards.each do |card|
           expect {
             described_class.new(card)
           }.to raise_error(ArgumentError)
