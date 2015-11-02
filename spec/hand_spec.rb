@@ -3,7 +3,7 @@ require "hand"
 
 describe Hand do
   describe "#initialize" do
-    it "builds a `Hand` from an `Array` of `String`s" do
+    it "builds a hand from an array of " do
       expect(described_class.new(%w(AS AD 5S 6D 7H))).to be_a(described_class)
     end
 
@@ -22,7 +22,19 @@ describe Hand do
     end
   end
 
-  describe "#to_s" do
+  describe "#min_rank" do
+    it "determines the smallest rank of the 5 cards" do
+      hand = described_class.new(%w(AS AD 5S 6D 7H))
 
+      expect(hand.min_rank).to eq(CardRank.new('5'))
+    end
+  end
+
+  describe "#max_rank" do
+    it "determines the smallest rank of the 5 cards" do
+      hand = described_class.new(%w(AS AD 5S 6D 7H))
+
+      expect(hand.max_rank).to eq(CardRank.new('A'))
+    end
   end
 end
