@@ -9,6 +9,10 @@ class CardSuit
     validate!
   end
 
+  def ==(other)
+    self.suit == other.suit
+  end
+
 protected
 
   def validate!

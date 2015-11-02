@@ -21,20 +21,4 @@ describe Hand do
       end
     end
   end
-
-  describe "#min_rank" do
-    it "determines the smallest rank of the 5 cards" do
-      hand = described_class.new(%w(AS AD 5S 6D 7H))
-
-      expect(hand.min_rank).to eq(CardRank.new('5'))
-    end
-  end
-
-  describe "#max_rank" do
-    it "determines the smallest rank of the 5 cards" do
-      hand = described_class.new(%w(AS AD 5S 6D 7H))
-
-      expect(hand.max_rank).to eq(CardRank.new('A'))
-    end
-  end
 end

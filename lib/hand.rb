@@ -8,12 +8,4 @@ class Hand
 
     @cards = cards.map {|card| Card.new(card)}
   end
-
-  def min_rank
-    @cards.map(&:rank).min
-  end
-
-  def max_rank
-    @cards.map(&:rank).max
-  end
 end

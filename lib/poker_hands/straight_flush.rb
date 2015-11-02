@@ -1,6 +1,7 @@
 require 'poker_hand'
 
 class StraightFlush < PokerHand
-  def self.hand_matches?(hand)
+  def matches?
+    is_straight? and is_flush?
   end
 end
