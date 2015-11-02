@@ -1,7 +1,7 @@
 class CardRank
-  include Comparable
-
   RANKS = %w(2 3 4 5 6 7 8 9 T J Q K A)
+
+  include Comparable
 
   def initialize(rank)
     @rank = rank
