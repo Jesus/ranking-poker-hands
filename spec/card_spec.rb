@@ -3,7 +3,7 @@ require "card"
 
 describe Card do
   describe "#initialize" do
-    it "builds a `Card` from a `String`" do
+    it "builds a card from a string" do
       valid_cards = %w(2S 2D AH 3S 5S 2H 2C KH 5H 9C)
       valid_cards.each do |card|
         expect(described_class.new(card)).to be_a(described_class)
@@ -36,8 +36,8 @@ describe Card do
       card_pairs = [
         %w(7D AD),
         %w(JD AD),
-        %w(KD AD),
-        %w(TD QD)
+        %w(KD AS),
+        %w(TD QC)
       ]
 
       card_pairs.each do |card, greater_card|
@@ -51,8 +51,8 @@ describe Card do
     it "will return 1 if the receiver card is greater than the other card" do
       card_pairs = [
         %w(7D 6D),
-        %w(JD 6D),
-        %w(KD JD),
+        %w(JS 6D),
+        %w(KC JD),
         %w(TD 2D)
       ]
 
@@ -64,11 +64,20 @@ describe Card do
       end
     end
 
-    it "will return 0 if both cards have the same rank and suit" do
-      card_a = Card.new("8D")
-      card_b = Card.new("8D")
+    it "will return 0 if both cards have the same rank" do
+      card_pairs = [
+        %w(7D 7D),
+        %w(JS JD),
+        %w(KC KD),
+        %w(TD TD)
+      ]
 
-      expect(card_a <=> card_b).to eq(0)
+      card_pairs.each do |card, equal_card|
+        card = Card.new(card)
+        equal_card = Card.new(equal_card)
+
+        expect(card <=> equal_card).to eq(0)
+      end
     end
   end
 
