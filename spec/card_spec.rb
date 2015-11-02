@@ -97,6 +97,17 @@ describe Card do
   end
 
   describe "#prev" do
+    it "will return the next card sorted by rank" do
+      card_sequences = [
+        %w(3S 2S),
+        %w(AH KH),
+        %w(JH TH),
+        %w(TH 9H)
+      ]
 
+      card_sequences.each do |card, prev_card|
+        expect(Card.new(card).prev).to eq(Card.new(prev_card))
+      end
+    end
   end
 end

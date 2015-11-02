@@ -1,6 +1,8 @@
 class CardSuit
   SUITS = %w(H D C S)
 
+  attr_reader :suit
+
   def initialize(suit)
     @suit = suit
 

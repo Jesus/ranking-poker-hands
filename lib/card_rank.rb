@@ -3,6 +3,8 @@ class CardRank
 
   include Comparable
 
+  attr_reader :rank
+
   def initialize(rank)
     @rank = rank
 
