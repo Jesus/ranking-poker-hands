@@ -1,3 +1,5 @@
+require 'hand'
+
 class PokerHand
   # Each inheriting object is meant to implement a comparer for draws of two
   # hands of the same type.
