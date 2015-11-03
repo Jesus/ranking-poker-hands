@@ -7,7 +7,7 @@ describe FourOfAKind do
       poker_hands = [
         %w(5H 5H 5H 5H 9H),
         %w(6D 6S 5H 6H 6C),
-        %w(AD AS AH AH AC),
+        %w(AD AS JH AH AC),
         %w(2S 2S JS 2S 2S)
       ]
 
