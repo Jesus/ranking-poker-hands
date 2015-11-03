@@ -10,14 +10,16 @@ class PokerHand
     else
       raise ArgumentError
     end
+
+    # TODO: raise ArgumentError if the given hand doesn't match the given game.
   end
 
   # Each inheriting object is meant to implement a comparer for draws of two
   # hands of the same type.
-  def self.hand_matches?(hand)
-    raise NotImplementedError,
-      "Expected inheriting object to implement this method"
-  end
+  # def hand_matches?(hand)
+  #   raise NotImplementedError,
+  #     "Expected inheriting object to implement this method"
+  # end
 
   def min_rank
     @hand.cards.map(&:rank).min
