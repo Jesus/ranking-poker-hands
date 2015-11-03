@@ -1,17 +1,25 @@
 require 'hand'
 
 class PokerHand
+  def self.new(*args)
+    poker_hand_types.each do |klass|
+      object = klass.allocate
+      object.send :initialize, *args
+      return object if object.cards_match?
+    end
+  end
+
   def initialize(hand)
     case hand
     when Array
       @hand = Hand.new(hand)
     when Hand
       @hand = hand
+    when PokerHand
+      @hand = hand.hand
     else
       raise ArgumentError
     end
-
-    # TODO: raise ArgumentError if the given hand doesn't match the given game.
   end
 
   # Each inheriting object is meant to implement a comparer for draws of two
@@ -52,4 +60,21 @@ class PokerHand
 
     return true
   end
+
+protected
+
+  def self.poker_hand_types
+    [
+      StraightFlush,
+      FourOfAKind,
+      FullHouse,
+      Flush,
+      Straight,
+      ThreeOfAKind,
+      TwoPair,
+      OnePair,
+      HighCard
+    ]
+  end
+
 end

@@ -41,6 +41,10 @@ class Card
     end
   end
 
+  def inspect
+    "#{rank.inspect}#{suit.inspect}"
+  end
+
 protected
 
   def init_from_string(card_identifier)

@@ -17,6 +17,10 @@ class CardSuit
     self.suit == other.suit
   end
 
+  def inspect
+    @suit
+  end
+
 protected
 
   def validate!

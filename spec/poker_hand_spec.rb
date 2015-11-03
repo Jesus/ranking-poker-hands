@@ -1,7 +1,34 @@
 require "spec_helper"
 require "poker_hand"
+require 'poker_hands/straight_flush'
+require 'poker_hands/four_of_a_kind'
+require 'poker_hands/full_house'
+require 'poker_hands/flush'
+require 'poker_hands/straight'
+require 'poker_hands/three_of_a_kind'
+require 'poker_hands/two_pair'
+require 'poker_hands/one_pair'
+require 'poker_hands/high_card'
 
 describe PokerHand do
+  describe "::new" do
+    it "returns an object representing the highest possible poker hand" do
+      hands = [
+        [%w(2S 2D 5S 5D 4H), TwoPair],
+        [%w(2H 3H 5H 4H 6H), StraightFlush],
+        [%w(2S 3D AS 5D 4H), HighCard],
+        [%w(2S 2D 5S 5D 5H), FullHouse],
+        [%w(2S 2D 2C 5D 4H), ThreeOfAKind],
+        [%w(2H 3H AH 5H 4H), Flush],
+        [%w(4D 4S 3H 3C 3S), FullHouse]
+      ]
+
+      hands.each do |hand, hand_type|
+        expect(described_class.new(hand)).to be_a(hand_type)
+      end
+    end
+  end
+
   describe "#min_rank" do
     it "determines the smallest rank of the 5 cards" do
       hand = described_class.new(%w(AS AD 5S 6D 7H))

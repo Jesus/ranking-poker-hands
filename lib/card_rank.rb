@@ -35,6 +35,10 @@ class CardRank
     end
   end
 
+  def inspect
+    @rank
+  end
+
 protected
 
   def rank_index
