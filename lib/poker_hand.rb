@@ -37,11 +37,11 @@ class PokerHand
     @hand.cards.map(&:rank).count(rank)
   end
 
-  def is_straight?
+  def is_flush?
     @hand.cards.all? { |card| card.suit == @hand.cards.first.suit }
   end
 
-  def is_flush?
+  def is_straight?
     rank = self.min_rank
     @hand.cards.size.times do
       if rank.nil? or @hand.cards.all? {|card| card.rank != rank}
