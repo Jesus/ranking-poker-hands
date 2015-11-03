@@ -1,6 +1,10 @@
 class CardSuit
   SUITS = %w(H D C S)
 
+  def self.all_suits
+    SUITS.map { |suit| new(suit) }
+  end
+
   attr_reader :suit
 
   def initialize(suit)

@@ -1,6 +1,10 @@
 class CardRank
   RANKS = %w(2 3 4 5 6 7 8 9 T J Q K A)
 
+  def self.all_ranks
+    RANKS.map { |rank| new(rank) }
+  end
+
   include Comparable
 
   attr_reader :rank

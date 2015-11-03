@@ -2,8 +2,7 @@ require 'poker_hand'
 
 class FourOfAKind < PokerHand
   def cards_match?
-    CardRank::RANKS.any? do |rank|
-      rank = CardRank.new(rank)
+    CardRank::all_ranks.any? do |rank|
       rank_count(rank) == 4
     end
   end
