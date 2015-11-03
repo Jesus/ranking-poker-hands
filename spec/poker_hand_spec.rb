@@ -78,4 +78,41 @@ describe PokerHand do
       end
     end
   end
+
+  describe "#rank_count" do
+    it "counts the amount of cards with the given rank" do
+      hands = [
+        [%w(AS JS QS KS TS), 'A', 1],
+        [%w(9S JH QS KS TS), 'T', 1],
+        [%w(8H 4H 5H 6H 7H), '3', 0],
+        [%w(2D 3D 4D 5D 6D), '9', 0],
+        [%w(4D 4D 4D 4D 4D), '4', 5]
+      ]
+
+      hands.each do |hand, rank, count|
+        hand = described_class.new(hand)
+        rank = CardRank.new(rank)
+
+        expect(hand.rank_count(rank)).to eq(count)
+      end
+    end
+  end
+
+  describe "#suit_count" do
+    it "counts the amount of cards with the given suit" do
+      hands = [
+        [%w(AS JS QS KS TS), 'S', 5],
+        [%w(9S JH QS KS TS), 'S', 4],
+        [%w(8H 4H 5H 6H 7H), 'S', 0],
+        [%w(2D 3D 4D 5D 6D), 'D', 5]
+      ]
+
+      hands.each do |hand, suit, count|
+        hand = described_class.new(hand)
+        suit = CardSuit.new(suit)
+
+        expect(hand.suit_count(suit)).to eq(count)
+      end
+    end
+  end
 end

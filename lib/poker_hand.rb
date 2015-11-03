@@ -29,6 +29,14 @@ class PokerHand
     @hand.cards.map(&:rank).max
   end
 
+  def suit_count(suit)
+    @hand.cards.map(&:suit).count(suit)
+  end
+
+  def rank_count(rank)
+    @hand.cards.map(&:rank).count(rank)
+  end
+
   def is_straight?
     @hand.cards.all? { |card| card.suit == @hand.cards.first.suit }
   end
