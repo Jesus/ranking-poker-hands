@@ -33,12 +33,7 @@ class PokerHand
     end
   end
 
-  # Each inheriting object is meant to implement a comparer for draws of two
-  # hands of the same type.
-  # def hand_matches?(hand)
-  #   raise NotImplementedError,
-  #     "Expected inheriting object to implement this method"
-  # end
+protected
 
   def min_rank
     @hand.cards.map(&:rank).min
@@ -76,8 +71,6 @@ class PokerHand
     return true
   end
 
-protected
-
   def self.poker_hand_types
     [
       StraightFlush,
@@ -95,5 +88,4 @@ protected
   def hand_type_index
     self.class.poker_hand_types.index(self.class)
   end
-
 end
