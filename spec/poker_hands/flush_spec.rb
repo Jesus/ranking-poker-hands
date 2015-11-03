@@ -3,7 +3,7 @@ require "poker_hands/flush"
 
 describe Flush do
   describe "#cards_match?" do
-    it "is true if the given hand has full house" do
+    it "is true if the given hand has flush" do
       poker_hands = [
         %w(5H 5H 5H 3H 3H),
         %w(6S 5S 5S 6S 6S),
@@ -18,7 +18,7 @@ describe Flush do
       end
     end
 
-    it "is false if the given hand doesn't have full house" do
+    it "is false if the given hand doesn't have flush" do
       poker_hands = [
         %w(5H 5H 7H 7H 9D),
         %w(6H 2H 3D 4H 3H),
