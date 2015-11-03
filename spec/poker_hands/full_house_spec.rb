@@ -2,6 +2,43 @@ require "spec_helper"
 require "poker_hands"
 
 describe FullHouse do
+  describe "#<=>" do
+    it "returns -1 if the receiver is smaller" do
+      receiver = described_class.new(%w(KH KH TH TH TH))
+      other    = described_class.new(%w(KH KH KH TH TH))
+
+      expect(receiver<=>(other)).to eq(-1)
+    end
+
+    it "returns -1 if the receiver is smaller (with tie)" do
+      receiver = described_class.new(%w(KH KH KH 4C 4S))
+      other    = described_class.new(%w(KH KH KH TH TH))
+
+      expect(receiver<=>(other)).to eq(-1)
+    end
+
+    it "returns 1 if there receiver is greater" do
+      receiver = described_class.new(%w(TH 3H 3H TH TH))
+      other    = described_class.new(%w(7H 7H 7H 9H 9H))
+
+      expect(receiver<=>(other)).to eq(1)
+    end
+
+    it "returns 1 if there receiver is greater (with tie)" do
+      receiver = described_class.new(%w(TH TH TH 9H 9H))
+      other    = described_class.new(%w(TH TH TH 3H 3C))
+
+      expect(receiver<=>(other)).to eq(1)
+    end
+
+    it "returns 0 if there's a draw" do
+      receiver = described_class.new(%w(TH TH TH KH KS))
+      other    = described_class.new(%w(TH TH TH KH KC))
+
+      expect(receiver<=>(other)).to eq(0)
+    end
+  end
+
   describe "#cards_match?" do
     it "is true if the given hand has full house" do
       poker_hands = [
