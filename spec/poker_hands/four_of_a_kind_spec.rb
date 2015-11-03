@@ -2,6 +2,43 @@ require "spec_helper"
 require "poker_hands"
 
 describe FourOfAKind do
+  describe "#<=>" do
+    it "returns -1 if the receiver is smaller" do
+      receiver = described_class.new(%w(5H 5H 5H 5H AH))
+      other    = described_class.new(%w(6H 6H 6H 6H 9H))
+
+      expect(receiver<=>(other)).to eq(-1)
+    end
+
+    it "returns -1 if the receiver is smaller (with kicker)" do
+      receiver = described_class.new(%w(5H 5H 5H 5H 3H))
+      other    = described_class.new(%w(5H 5H 5H 5H 9H))
+
+      expect(receiver<=>(other)).to eq(-1)
+    end
+
+    it "returns 1 if there receiver is greater" do
+      receiver = described_class.new(%w(TH TH TH TH 9H))
+      other    = described_class.new(%w(7H 7H 7H 7H 9H))
+
+      expect(receiver<=>(other)).to eq(1)
+    end
+
+    it "returns 1 if there receiver is greater (with kicker)" do
+      receiver = described_class.new(%w(TH TH TH TH 9H))
+      other    = described_class.new(%w(TH TH TH TH 3C))
+
+      expect(receiver<=>(other)).to eq(1)
+    end
+
+    it "returns 0 if there's a draw" do
+      receiver = described_class.new(%w(TH TH TH TH 3S))
+      other    = described_class.new(%w(TH TH TH TH 3C))
+
+      expect(receiver<=>(other)).to eq(0)
+    end
+  end
+
   describe "#cards_match?" do
     it "is true if the given hand has four of a kind" do
       poker_hands = [
