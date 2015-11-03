@@ -48,6 +48,10 @@ class PokerHand
     @hand.cards.map(&:rank).max
   end
 
+  def x_of_a_kind_rank(x)
+    CardRank::all_ranks.find { |rank| rank_count(rank) == x }
+  end
+
   def suit_count(suit)
     @hand.cards.map(&:suit).count(suit)
   end

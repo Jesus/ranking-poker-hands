@@ -18,10 +18,10 @@ protected
   end
 
   def four_of_a_kind_rank
-    CardRank::all_ranks.find { |rank| rank_count(rank) == 4 }
+    x_of_a_kind_rank(4)
   end
 
   def kicker_rank
-    CardRank::all_ranks.find { |rank| rank_count(rank) == 1 }
+    x_of_a_kind_rank(1)
   end
 end
