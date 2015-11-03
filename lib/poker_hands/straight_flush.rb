@@ -1,5 +1,3 @@
-require 'poker_hand'
-
 class StraightFlush < PokerHand
   def cards_match?
     is_straight? and is_flush?

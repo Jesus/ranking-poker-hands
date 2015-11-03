@@ -1,5 +1,5 @@
 require "spec_helper"
-require "poker_hands/straight_flush"
+require "poker_hands"
 
 describe StraightFlush do
   describe "#cards_match?" do

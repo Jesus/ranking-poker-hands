@@ -1,17 +1,8 @@
 require "spec_helper"
-require "poker_hand"
-require 'poker_hands/straight_flush'
-require 'poker_hands/four_of_a_kind'
-require 'poker_hands/full_house'
-require 'poker_hands/flush'
-require 'poker_hands/straight'
-require 'poker_hands/three_of_a_kind'
-require 'poker_hands/two_pair'
-require 'poker_hands/one_pair'
-require 'poker_hands/high_card'
+require "poker_hands"
 
 describe PokerHand do
-  describe "::new" do
+  describe "#casted" do
     it "returns an object representing the highest possible poker hand" do
       hands = [
         [%w(2S 2D 5S 5D 4H), TwoPair],
@@ -24,7 +15,7 @@ describe PokerHand do
       ]
 
       hands.each do |hand, hand_type|
-        expect(described_class.new(hand)).to be_a(hand_type)
+        expect(described_class.new(hand).casted).to be_a(hand_type)
       end
     end
   end

@@ -1,5 +1,5 @@
 require "spec_helper"
-require "poker_hands/flush"
+require "poker_hands"
 
 describe Flush do
   describe "#cards_match?" do
@@ -28,6 +28,7 @@ describe Flush do
       ]
 
       poker_hands.each do |poker_hand|
+        puts poker_hand.join "-"
         poker_hand = described_class.new(poker_hand)
 
         expect(poker_hand.cards_match?).to be_falsey

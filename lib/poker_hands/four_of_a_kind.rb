@@ -1,5 +1,3 @@
-require 'poker_hand'
-
 class FourOfAKind < PokerHand
   def cards_match?
     CardRank::all_ranks.any? do |rank|

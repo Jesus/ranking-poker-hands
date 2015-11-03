@@ -1,5 +1,5 @@
 require "spec_helper"
-require "poker_hands/full_house"
+require "poker_hands"
 
 describe FullHouse do
   describe "#cards_match?" do

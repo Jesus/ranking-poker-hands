@@ -1,5 +1,3 @@
-require 'poker_hand'
-
 class TwoPair < PokerHand
   def cards_match?
     first_pair_rank = nil

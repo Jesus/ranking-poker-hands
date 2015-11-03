@@ -1,13 +1,9 @@
 require 'hand'
 
 class PokerHand
-  def self.new(*args)
-    poker_hand_types.each do |klass|
-      object = klass.allocate
-      object.send :initialize, *args
-      return object if object.cards_match?
-    end
-  end
+  include Comparable
+
+  attr_reader :hand
 
   def initialize(hand)
     case hand
@@ -20,6 +16,17 @@ class PokerHand
     else
       raise ArgumentError
     end
+  end
+
+  def casted
+    self.class.poker_hand_types.each do |hand_type|
+      hand = hand_type.new(self)
+      return hand if hand.cards_match?
+    end
+  end
+
+  def <=>(other)
+    self.hand_type_index <=> other.hand_type_index
   end
 
   # Each inheriting object is meant to implement a comparer for draws of two
@@ -75,6 +82,10 @@ protected
       OnePair,
       HighCard
     ]
+  end
+
+  def hand_type_index
+    self.class.poker_hand_types.index(self.class)
   end
 
 end

@@ -1,5 +1,5 @@
 require "spec_helper"
-require "poker_hands/three_of_a_kind"
+require "poker_hands"
 
 describe ThreeOfAKind do
   describe "#cards_match?" do
