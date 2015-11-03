@@ -21,6 +21,8 @@ describe FullHouse do
     it "is false if the given hand doesn't have full house" do
       poker_hands = [
         %w(5H 5H 7H 7H 9D),
+        %w(5H 5H 5H 7H 9D),
+        %w(5H 6H 7H 7H 7D),
         %w(6H 2H 3H 4H 3H),
         %w(TH 9H 8H 7H QH),
         %w(5S 6S 7S 9S 9S),
