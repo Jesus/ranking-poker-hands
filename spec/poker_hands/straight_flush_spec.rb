@@ -2,6 +2,29 @@ require "spec_helper"
 require "poker_hands"
 
 describe StraightFlush do
+  describe "#<=>" do
+    it "returns -1 if the receiver is smaller" do
+      receiver = described_class.new(%w(5H 6H 7H 8H 4H))
+      other    = described_class.new(%w(5H 6H 7H 8H 9H))
+
+      expect(receiver<=>(other)).to eq(-1)
+    end
+
+    it "returns 1 if there receiver is greater" do
+      receiver = described_class.new(%w(TH 6H 7H 8H 9H))
+      other    = described_class.new(%w(5H 6H 7H 8H 9H))
+
+      expect(receiver<=>(other)).to eq(1)
+    end
+
+    it "returns 0 if there's a draw" do
+      receiver = described_class.new(%w(5H 6H 7H 8H 9H))
+      other    = described_class.new(%w(5H 6H 7H 8H 9H))
+
+      expect(receiver<=>(other)).to eq(0)
+    end
+  end
+
   describe "#cards_match?" do
     it "is true if the given hand has a straight flush" do
       poker_hands = [

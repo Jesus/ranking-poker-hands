@@ -26,7 +26,11 @@ class PokerHand
   end
 
   def <=>(other)
-    self.hand_type_index <=> other.hand_type_index
+    if self.class == other.class
+      self.compare_with(other)
+    else
+      other.hand_type_index <=> self.hand_type_index
+    end
   end
 
   # Each inheriting object is meant to implement a comparer for draws of two
