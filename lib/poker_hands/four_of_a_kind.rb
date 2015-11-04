@@ -7,14 +7,11 @@ class FourOfAKind < PokerHand
 
 protected
 
-  def compare_with(other)
-    diff = self.four_of_a_kind_rank <=> other.four_of_a_kind_rank
-
-    if diff == 0 # tie
-      self.kicker_rank <=> other.kicker_rank
-    else
-      diff
-    end
+  def comparer_methods
+    super + [
+      :four_of_a_kind_rank,
+      :kicker_rank
+    ]
   end
 
   def four_of_a_kind_rank

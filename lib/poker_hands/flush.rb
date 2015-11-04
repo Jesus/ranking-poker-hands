@@ -5,13 +5,33 @@ class Flush < PokerHand
 
 protected
 
-  def compare_with(other)
-    n = 0
-    loop do
-      diff = self.max_rank(n) <=> other.max_rank(n)
-      n += 1
+  def comparer_methods
+    super + [
+      :highest_rank,
+      :second_highest_rank,
+      :third_highest_rank,
+      :fourth_highest_rank,
+      :fifth_highest_rank
+    ]
+  end
 
-      return diff if diff != 0 or n >= 5
-    end
+  def highest_rank
+    max_rank
+  end
+
+  def second_highest_rank
+    max_rank(1)
+  end
+
+  def third_highest_rank
+    max_rank(2)
+  end
+
+  def fourth_highest_rank
+    max_rank(3)
+  end
+
+  def fifth_highest_rank
+    max_rank(4)
   end
 end

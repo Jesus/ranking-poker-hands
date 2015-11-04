@@ -5,7 +5,9 @@ class Straight < PokerHand
 
 protected
 
-  def compare_with(other)
-    self.min_rank <=> other.min_rank
+  def comparer_methods
+    super + [
+      :min_rank
+    ]
   end
 end

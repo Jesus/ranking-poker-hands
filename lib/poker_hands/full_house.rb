@@ -9,14 +9,11 @@ class FullHouse < PokerHand
 
 protected
 
-  def compare_with(other)
-    diff = self.three_of_a_kind_rank <=> other.three_of_a_kind_rank
-
-    if diff == 0 # tie
-      self.pair_rank <=> other.pair_rank
-    else
-      diff
-    end
+  def comparer_methods
+    super + [
+      :three_of_a_kind_rank,
+      :pair_rank
+    ]
   end
 
   def three_of_a_kind_rank

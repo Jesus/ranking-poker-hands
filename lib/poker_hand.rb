@@ -26,11 +26,13 @@ class PokerHand
   end
 
   def <=>(other)
-    if self.class == other.class
-      self.compare_with(other)
-    else
-      other.hand_type_index <=> self.hand_type_index
+    comparer_methods.each do |method|
+      diff = self.send(method) <=> other.send(method)
+
+      return diff if diff != 0
     end
+
+    0
   end
 
 protected
@@ -85,19 +87,23 @@ protected
 
   def self.poker_hand_types
     [
-      StraightFlush,
-      FourOfAKind,
-      FullHouse,
-      Flush,
-      Straight,
-      ThreeOfAKind,
-      TwoPair,
+      HighCard,
       OnePair,
-      HighCard
+      TwoPair,
+      ThreeOfAKind,
+      Straight,
+      Flush,
+      FullHouse,
+      FourOfAKind,
+      StraightFlush
     ]
   end
 
-  def hand_type_index
+  def hand_type_score
     self.class.poker_hand_types.index(self.class)
+  end
+
+  def comparer_methods
+    [:hand_type_score]
   end
 end
