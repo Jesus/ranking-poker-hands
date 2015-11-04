@@ -19,7 +19,7 @@ class PokerHand
   end
 
   def casted
-    self.class.poker_hand_types.each do |hand_type|
+    self.class.poker_hand_types.reverse.each do |hand_type|
       hand = hand_type.new(self)
       return hand if hand.cards_match?
     end
