@@ -30,6 +30,7 @@ describe StraightFlush do
       poker_hands = [
         %w(5H 6H 7H 8H 9H),
         %w(6H 2H 3H 4H 5H),
+        %w(4S 5S 2S 3S AS),
         %w(TH 9H 8H 7H 6H),
         %w(5S 6S 7S 8S 9S),
         %w(AS KS JS QS TS)

@@ -8,6 +8,7 @@ describe Straight do
         %w(5H 4H 6H 3H 7H),
         %w(TS 9S QS KS JS),
         %w(JH QH KH AH TH),
+        %w(5H 4H 3H 2H AH),
         %w(6S 5S 4S 3S 2S)
       ]
 

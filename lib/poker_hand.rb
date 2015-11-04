@@ -66,15 +66,21 @@ protected
   end
 
   def is_straight?
-    rank = self.min_rank
-    @hand.cards.size.times do
-      if rank.nil? or @hand.cards.all? {|card| card.rank != rank}
-        return false
-      end
-      rank = rank.next
+    sequence = %w(A 2 3 4 5 6 7 8 9 T J Q K A)
+    possible_straights = sequence.size - (@hand.cards.size - 1)
+
+    card_ranks = @hand.cards.map(&:rank)
+
+    possible_straights.times do
+      straight_ranks = sequence.take(5) # Line dedicated to Dave Brubeck
+      straight_ranks.map! { |r| CardRank.new(r) }
+
+      return true if straight_ranks.all? { |rank| card_ranks.include? rank }
+
+      sequence = sequence.rotate
     end
 
-    return true
+    return false
   end
 
   def self.poker_hand_types
