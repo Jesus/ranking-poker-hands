@@ -3,7 +3,7 @@ require "poker_hands"
 
 describe PokerHand do
   describe "#casted" do
-    it "returns an object representing the highest possible poker hand" do
+    it "returns an object of the best possible poker hand type" do
       hands = [
         [%w(2S 2D 5S 5D 4H), TwoPair],
         [%w(2H 3H 5H 4H 6H), StraightFlush],
@@ -24,7 +24,7 @@ describe PokerHand do
     it "determines the smallest rank of the 5 cards" do
       hand = described_class.new(%w(AS AD 5S 6D 7H))
 
-      expect(hand.min_rank).to eq(CardRank.new('5'))
+      expect(hand.send :min_rank).to eq(CardRank.new('5'))
     end
   end
 
@@ -32,7 +32,7 @@ describe PokerHand do
     it "determines the smallest rank of the 5 cards" do
       hand = described_class.new(%w(AS AD 5S 6D 7H))
 
-      expect(hand.max_rank).to eq(CardRank.new('A'))
+      expect(hand.send :max_rank).to eq(CardRank.new('A'))
     end
   end
 
@@ -47,7 +47,7 @@ describe PokerHand do
       hands.each do |hand|
         hand = described_class.new(hand)
 
-        expect(hand.is_flush?).to be(true)
+        expect(hand.send :is_flush?).to be(true)
       end
     end
 
@@ -61,7 +61,7 @@ describe PokerHand do
       hands.each do |hand|
         hand = described_class.new(hand)
 
-        expect(hand.is_flush?).to be(false)
+        expect(hand.send :is_flush?).to be(false)
       end
     end
   end
@@ -78,7 +78,7 @@ describe PokerHand do
       hands.each do |hand|
         hand = described_class.new(hand)
 
-        expect(hand.is_straight?).to be(true)
+        expect(hand.send :is_straight?).to be(true)
       end
     end
 
@@ -92,7 +92,7 @@ describe PokerHand do
       hands.each do |hand|
         hand = described_class.new(hand)
 
-        expect(hand.is_straight?).to be(false)
+        expect(hand.send :is_straight?).to be(false)
       end
     end
   end
@@ -111,7 +111,7 @@ describe PokerHand do
         hand = described_class.new(hand)
         rank = CardRank.new(rank)
 
-        expect(hand.rank_count(rank)).to eq(count)
+        expect(hand.send(:rank_count, rank)).to eq(count)
       end
     end
   end
@@ -129,7 +129,7 @@ describe PokerHand do
         hand = described_class.new(hand)
         suit = CardSuit.new(suit)
 
-        expect(hand.suit_count(suit)).to eq(count)
+        expect(hand.send(:suit_count, suit)).to eq(count)
       end
     end
   end
