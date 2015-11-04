@@ -7,6 +7,9 @@ class OnePair < PokerHand
 
 protected
 
+  # In the event of a tie: Highest pair wins. If players have the same pair,
+  # the highest side card wins, and if necessary, the second-highest and
+  # third-highest side card can be used to break the tie.
   def comparer_methods
     super + [
       :pair_rank,

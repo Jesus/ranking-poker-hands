@@ -5,6 +5,9 @@ class HighCard < PokerHand
 
 protected
 
+  # In the event of a tie: Highest card wins, and if necessary, the
+  # second-highest, third-highest, fourth-highest and smallest card can be
+  # used to break the tie.
   def comparer_methods
     super + [
       :first_high_card,

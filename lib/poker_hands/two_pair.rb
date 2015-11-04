@@ -10,6 +10,9 @@ class TwoPair < PokerHand
 
 protected
 
+  # In the event of a tie: Highest pair wins. If players have the same highest
+  # pair, highest second pair wins. If both players have two identical pairs,
+  # highest side card wins.
   def comparer_methods
     super + [
       :highest_pair_rank,

@@ -5,6 +5,8 @@ class Straight < PokerHand
 
 protected
 
+  # In the event of a tie: Highest ranking card at the top of the sequence
+  # wins.
   def comparer_methods
     super + [
       :min_rank

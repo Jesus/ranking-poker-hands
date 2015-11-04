@@ -7,6 +7,9 @@ class ThreeOfAKind < PokerHand
 
 protected
 
+  # In the event of a tie: Highest ranking three of a kind wins. In community
+  # card games where players have the same three of a kind, the highest side
+  # card, and if necessary, the second-highest side card wins.
   def comparer_methods
     super + [
       :three_of_a_kind_rank,

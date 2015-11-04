@@ -9,6 +9,9 @@ class FullHouse < PokerHand
 
 protected
 
+  # In the event of a tie: Highest three matching cards wins the pot. In
+  # community card games where players have the same three matching cards,
+  # the highest value of the two matching cards wins.
   def comparer_methods
     super + [
       :three_of_a_kind_rank,

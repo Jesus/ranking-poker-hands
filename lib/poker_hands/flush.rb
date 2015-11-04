@@ -5,6 +5,11 @@ class Flush < PokerHand
 
 protected
 
+  # In the event of a tie: The player holding the highest ranked card wins. If
+  # necessary, the second-highest, third-highest, fourth-highest, and
+  # fifth-highest cards can be used to break the tie. If all five cards are the
+  # same ranks, the pot is split. The suit itself is never used to break a tie
+  # in poker.
   def comparer_methods
     super + [
       :highest_rank,

@@ -7,6 +7,9 @@ class FourOfAKind < PokerHand
 
 protected
 
+  # In the event of a tie: Highest four of a kind wins. In community card
+  # games where players have the same four of a kind, the highest fifth side
+  # card ('kicker') wins.
   def comparer_methods
     super + [
       :four_of_a_kind_rank,
