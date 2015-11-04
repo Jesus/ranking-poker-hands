@@ -7,10 +7,10 @@ describe PokerHand do
       hands = [
         [%w(2S 2D 5S 5D 4H), TwoPair],
         [%w(2H 3H 5H 4H 6H), StraightFlush],
-        [%w(2S 3D AS 5D 4H), HighCard],
+        [%w(2S 3D TS 5D 4H), HighCard],
         [%w(2S 2D 5S 5D 5H), FullHouse],
         [%w(2S 2D 2C 5D 4H), ThreeOfAKind],
-        [%w(2H 3H AH 5H 4H), Flush],
+        [%w(2H 3H 9H AH 4H), Flush],
         [%w(4D 4S 3H 3C 3S), FullHouse]
       ]
 
