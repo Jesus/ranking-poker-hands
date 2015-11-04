@@ -4,7 +4,7 @@ require "poker_hands"
 describe StraightFlush do
   describe "#<=>" do
     it "returns -1 if the receiver is smaller" do
-      receiver = described_class.new(%w(5H 6H 7H 8H 4H))
+      receiver = described_class.new(%w(5H 4H 3H 2H AH))
       other    = described_class.new(%w(5H 6H 7H 8H 9H))
 
       expect(receiver<=>(other)).to eq(-1)
