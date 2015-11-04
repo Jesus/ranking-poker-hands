@@ -52,7 +52,11 @@ protected
   end
 
   def x_of_a_kind_rank(x)
-    CardRank::all_ranks.find { |rank| rank_count(rank) == x }
+    x_of_a_kind_ranks(x).first
+  end
+
+  def x_of_a_kind_ranks(x)
+    CardRank::all_ranks.select { |rank| rank_count(rank) == x }
   end
 
   def suit_count(suit)

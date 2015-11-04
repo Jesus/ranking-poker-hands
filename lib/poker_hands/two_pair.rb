@@ -7,4 +7,26 @@ class TwoPair < PokerHand
       rank_count(rank) == 2
     end
   end
+
+protected
+
+  def comparer_methods
+    super + [
+      :highest_pair_rank,
+      :lowest_pair_rank,
+      :side_card_rank
+    ]
+  end
+
+  def highest_pair_rank
+    x_of_a_kind_ranks(2).max
+  end
+
+  def lowest_pair_rank
+    x_of_a_kind_ranks(2).min
+  end
+
+  def side_card_rank
+    x_of_a_kind_rank(1)
+  end
 end
