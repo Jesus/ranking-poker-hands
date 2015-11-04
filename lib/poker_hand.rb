@@ -35,12 +35,18 @@ class PokerHand
 
 protected
 
-  def min_rank
-    @hand.cards.map(&:rank).min
+# Returns the rank of the nth card sorted by rank asc
+  def min_rank(n = 0)
+    sorted_ranks[n]
   end
 
-  def max_rank
-    @hand.cards.map(&:rank).max
+  # Returns the rank of the nth card sorted by rank desc
+  def max_rank(n = 0)
+    sorted_ranks.reverse[n]
+  end
+
+  def sorted_ranks
+    @hand.cards.map(&:rank).sort
   end
 
   def x_of_a_kind_rank(x)
