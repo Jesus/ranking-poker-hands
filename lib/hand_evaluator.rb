@@ -8,7 +8,7 @@ class HandEvaluator
     elsif right_hand > left_hand
       return right
     else
-      raise "now what?"
+      return nil
     end
   end
 end

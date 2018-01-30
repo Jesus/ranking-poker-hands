@@ -1,0 +1,27 @@
+#!/usr/bin/env ruby
+
+require 'pathname'
+ENV['BUNDLE_GEMFILE'] ||= File.expand_path("../../Gemfile",
+  Pathname.new(__FILE__).realpath)
+
+require 'rubygems'
+require 'bundler/setup'
+
+PROJECT_ROOT = File.expand_path('../..', __FILE__)
+$LOAD_PATH << File.join(PROJECT_ROOT, 'lib')
+Dir["#{PROJECT_ROOT}/lib/**/*.rb"].each { |f| require f }
+
+hand1, hand2 = ARGV.map(&:split)
+stronger = HandEvaluator.new.return_stronger_hand(hand1, hand2)
+
+if stronger.nil?
+  puts "Tie!"
+else
+  print "Hand 1: #{hand1.inspect}"
+  print " Winner!" if hand1 == stronger
+  puts ""
+
+  print "Hand 2: #{hand2.inspect}"
+  print " Winner!" if hand2 == stronger
+  puts ""
+end
